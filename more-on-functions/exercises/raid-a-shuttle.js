@@ -51,7 +51,7 @@ console.log("Hold status: " + holdStatus(cargoHold));
 
 let irs = function(levelOfFuel, itemsInCargo) {
   let loot = checkCargo(itemsInCargo);
-  return `Loot:\n\t${dontBeSuspicious(levelOfFuel)} kg of fuel\n\t${loot[0]}\n\t${loot[1]}`;
+  return `Raided ${dontBeSuspicious(levelOfFuel)} kg of fuel from the tanks, and stole ${loot[0]} and ${loot[1]} from the cargo hold.`;
 }
 
 console.log(irs(fuelLevel,cargoHold));
