@@ -18,11 +18,44 @@ function holdStatus(arr){
   }
 }
 
+let dontBeSuspicious = function(param) {
+  if (checkFuel(param) === 'green') {
+    return param - 100001;
+  }
+  else if (checkFuel(param) === 'yellow') {
+    return param - 50001;
+  }
+  else {
+    return param;
+  }
+}
+
+let checkCargo = function(cargo) {
+  let lootBag = [];
+  lootBag.push(cargo[4]);
+  lootBag.push(cargo[6]);
+  cargo[4] = 'rock';
+  cargo[6] = 'another rock';
+
+  return lootBag;
+}
+
 let fuelLevel = 200000;
 let cargoHold = ['meal kits', 'space suits', 'first-aid kit', 'satellite', 'gold', 'water', 'AE-35 unit'];
 
+// fuelLevel -= dontBeSuspicious(fuelLevel);
+
+
 console.log("Fuel level: " + checkFuel(fuelLevel));
 console.log("Hold status: " + holdStatus(cargoHold));
+
+let irs = function(levelOfFuel, itemsInCargo) {
+  let loot = checkCargo(itemsInCargo);
+  return `Loot:\n\t${dontBeSuspicious(levelOfFuel)} kg of fuel\n\t${loot[0]}\n\t${loot[1]}`;
+}
+
+console.log(irs(fuelLevel,cargoHold));
+
 
 /* Steal some fuel from the shuttle:
  * /
