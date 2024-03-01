@@ -3,17 +3,50 @@
 <head>
 	<meta charset="utf-8">
 	<script>
-		// TODO: create a handler
+
+
+		function setSearchEngine() {
+			let actions = {
+				"google": "https://www.google.com/search",
+				"duckDuckGo": "https://duckduckgo.com/",
+				"bing": "https://www.bing.com/search",
+				"ask": "https://www.ask.com/web"
+			};
+
+			let form = document.getElementById("searchForm");
+			let engine = document.querySelector("input[name=engine]:checked");
+			let actionURL = actions[engine.value];
+
+			form.setAttribute("action",actionURL);
+		}
+		//Uncaught TypeError: Cannot read properties of null (reading 'value')
     window.addEventListener("load", function(){
-        // TODO: register the handler
+		let form = document.getElementById("searchForm");
+		form.addEventListener("submit", function() {
+		setSearchEngine();
+		});
     });
+
+
+
 	</script>
 </head>
 
 <body>
 
 	<form id="searchForm">
-    <!-- TODO: add form elements -->
+		<input type="text" name="q"/>
+		<input type="radio" name="engine" value="google"/>
+			<label>Google</label>
+		<input type="radio" name="engine" value="duckDuckGo"/>
+			<label>DuckDuckGo</label>
+		<input type="radio" name="engine" value="bing"/>
+			<label>Bing</label>
+		<input type="radio" name="engine" value="ask"/>
+			<label>Ask</label>
+		<button value="Go!">Go!</button>
+
+	
 	</form>
 
 </body>
