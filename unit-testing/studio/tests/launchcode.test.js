@@ -56,8 +56,3 @@ describe("Testing launchcode", function(){
   
 
 });
-
-/*
-["Web Development", "Data Analysis", "Liftoff"]
-
-*/
